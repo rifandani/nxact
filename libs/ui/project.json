@@ -9,7 +9,10 @@
       "executor": "@nrwl/linter:eslint",
       "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": ["libs/ui/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "libs/ui/src/*.{ts,tsx,js,jsx}",
+          "libs/ui/.storybook/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "build": {
@@ -17,7 +20,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/libs/ui"
+        "outputPath": "dist/libs/ui",
+        "postcssConfig": "libs/ui/postcss.config.js"
       },
       "configurations": {
         "development": {

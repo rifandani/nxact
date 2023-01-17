@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@myorg/ui": ["libs/ui/src/index.ts"]
+      "@nxact/hooks": ["libs/hooks/src/index.ts"],
+      "@nxact/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
