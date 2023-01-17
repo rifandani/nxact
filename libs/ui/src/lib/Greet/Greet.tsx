@@ -1,4 +1,4 @@
-import styles from './Greet.module.css';
+import '../../index.css';
 
 export interface GreetProps {
   name: string;
@@ -6,8 +6,8 @@ export interface GreetProps {
 
 export function Greet({ name }: GreetProps) {
   return (
-    <div className={styles['container']}>
-      <h1>Hello {name}!</h1>
+    <div className="text-red-500 text-xl">
+      <h1>Hello there, {name}!</h1>
     </div>
   );
 }

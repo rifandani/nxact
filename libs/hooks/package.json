@@ -1,7 +1,7 @@
 {
-  "name": "@nxact/ui",
+  "name": "@nxact/hooks",
   "version": "0.0.0",
-  "description": "A collection of common useful react components.",
+  "description": "A collection of common useful react hooks.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rifandani/nxact.git"
