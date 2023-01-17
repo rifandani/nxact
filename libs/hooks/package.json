@@ -4,7 +4,8 @@
   "description": "A collection of common useful react hooks.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rifandani/nxact.git"
+    "url": "git+https://github.com/rifandani/nxact.git",
+    "directory": "libs/hooks"
   },
   "bugs": {
     "url": "https://github.com/rifandani/nxact/issues"
@@ -13,7 +14,8 @@
   "author": "Rifandani",
   "license": "MIT",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "nx",

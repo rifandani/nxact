@@ -72,6 +72,14 @@
       "options": {
         "command": "test-storybook -c libs/ui/.storybook --url=http://localhost:4400"
       }
+    },
+    "release": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "npx semantic-release-plus --extends ./libs/ui/release.config.js",
+        "parallel": false
+      }
     }
   }
 }
