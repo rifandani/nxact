@@ -47,11 +47,6 @@ jobs:
         with:
           main-branch-name: ${{ github.base_ref }}
 
-      - name: Log "steps.setSHAs.outputs.base" and "steps.setSHAs.outputs.head"
-        run: |
-          echo "BASE: ${{ steps.setSHAs.outputs.base }}"
-          echo "HEAD: ${{ steps.setSHAs.outputs.head }}"
-
       - name: Detect package manager
         id: package_manager
         run: |
