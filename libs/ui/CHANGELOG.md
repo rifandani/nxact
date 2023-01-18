@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/rifandani/nxact/compare/ui-v1.2.0...ui-v1.2.1) (2023-01-18)
+
+
+### Bug Fixes
+
+* **ui:** button styling ([4fc287f](https://github.com/rifandani/nxact/commit/4fc287f5f2eda95e9e5d89eb60f55b905b416277))
+
 # [1.2.0](https://github.com/rifandani/nxact/compare/ui-v1.1.0...ui-v1.2.0) (2023-01-18)
 
 
