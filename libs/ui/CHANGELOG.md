@@ -1,3 +1,12 @@
+## [1.2.2](https://github.com/rifandani/nxact/compare/ui-v1.2.1...ui-v1.2.2) (2023-01-18)
+
+
+### Bug Fixes
+
+* **hooks:** adjust useMemoizedFn & package name ([bdc5f0f](https://github.com/rifandani/nxact/commit/bdc5f0f982d76b4812918cb18f8e62ab1d25ae52))
+* **ui:** adjust Button styling ([51f1db1](https://github.com/rifandani/nxact/commit/51f1db1bc0bb42e495c7e744c16ca3958d6c9944))
+* **ui:** styling Greet ([9ed0514](https://github.com/rifandani/nxact/commit/9ed0514344609dcacda728e5169f1170b4e4c5f3))
+
 ## [1.2.1](https://github.com/rifandani/nxact/compare/ui-v1.2.0...ui-v1.2.1) (2023-01-18)
 
 
