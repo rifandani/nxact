@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/rifandani/nxact/compare/ui-v1.0.0...ui-v1.1.0) (2023-01-18)
+
+
+### Features
+
+* **ui:** add ThisYear component with test and stories ([9f91a99](https://github.com/rifandani/nxact/commit/9f91a99a5c6bdcd609165387d3bf1e7a076fa83e))
+
 # 1.0.0 (2023-01-18)
 
 
