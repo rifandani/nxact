@@ -4,7 +4,7 @@
   "description": "A collection of common useful react hooks.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rifandani/nxact.git",
+    "url": "https://github.com/rifandani/nxact.git",
     "directory": "libs/hooks"
   },
   "bugs": {
