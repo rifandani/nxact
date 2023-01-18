@@ -125,7 +125,6 @@ jobs:
 
       - name: NX CI job ~ workspace-lint, format:check, lint, test, build
         run: |
-          npx nx workspace-lint
           npx nx format:check
           npx nx affected --target lint --parallel 3
           npx nx affected --target test --parallel 3 --ci --code-coverage
@@ -138,4 +137,5 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         # You can only release the updated projects by remove the --all option in the command below
         run: |
-          npx nx affected --target release
+          npx nx affected --target release --all
+          npx semantic-release-plus

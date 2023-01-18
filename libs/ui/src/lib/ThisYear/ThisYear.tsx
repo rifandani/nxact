@@ -6,7 +6,9 @@ export interface ThisYearProps {
 
 export function ThisYear({ date }: ThisYearProps) {
   return (
-    <h1>This year is: {(date ? new Date(date) : new Date()).getFullYear()}!</h1>
+    <h1 className="text-blue-500">
+      This year is: {(date ? new Date(date) : new Date()).getFullYear()}!
+    </h1>
   );
 }
 
