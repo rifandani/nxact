@@ -40,7 +40,7 @@
       "executor": "nx:run-commands",
       "outputs": [],
       "options": {
-        "command": "npx semantic-release-plus --extends ./libs/hooks/release.config.js",
+        "command": "npx semantic-release-plus --extends ./libs/hooks/release.config.js --verbose",
         "parallel": false
       }
     }
