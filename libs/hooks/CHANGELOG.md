@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/rifandani/nxact/compare/hooks-v1.0.0...hooks-v1.0.1) (2023-01-18)
+
+
+### Bug Fixes
+
+* **hooks:** adjust useMemoizedFn & package name ([bdc5f0f](https://github.com/rifandani/nxact/commit/bdc5f0f982d76b4812918cb18f8e62ab1d25ae52))
+
 # 1.0.0 (2023-01-18)
 
 
