@@ -47,8 +47,6 @@ jobs:
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         id: setSHAs
         uses: nrwl/nx-set-shas@v3
-        with:
-          main-branch-name: ${{ github.base_ref || github.ref }}
 
       - name: Detect package manager
         id: package_manager
