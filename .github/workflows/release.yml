@@ -37,13 +37,18 @@ jobs:
           token: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
           fetch-depth: 0
 
+      - name: Log "github.base_ref"
+        run: |
+          echo "GITHUB_BASE_REF: ${{ github.base_ref }}"
+
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         id: setSHAs
         uses: nrwl/nx-set-shas@v3
         with:
           main-branch-name: ${{ github.base_ref }}
+
+      - name: Log "steps.setSHAs.outputs.base" and "steps.setSHAs.outputs.head"
         run: |
-          echo "GITHUB_BASE_REF: ${{ github.base_ref }}"
           echo "BASE: ${{ steps.setSHAs.outputs.base }}"
           echo "HEAD: ${{ steps.setSHAs.outputs.head }}"
 
