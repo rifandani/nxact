@@ -13,11 +13,11 @@ import useLatest from '../useLatest/useLatest';
  * ```
  */
 export default function useUnmount(fn: () => void) {
-  const fnRef = useLatest(fn);
+  const ref = useLatest(fn);
 
   useEffect(
     () => () => {
-      fnRef.current();
+      ref.current();
     },
     // cleanup effect should only be called ONCE
     // eslint-disable-next-line react-hooks/exhaustive-deps
