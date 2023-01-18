@@ -8,13 +8,7 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e",
-          "build-storybook"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "build-storybook"]
       }
     }
   },
@@ -22,9 +16,6 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
-    },
-    "e2e": {
-      "inputs": ["default", "^production"]
     },
     "lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
@@ -58,7 +49,15 @@
         "babel": true
       },
       "component": {
-        "style": "css"
+        "project": "ui",
+        "style": "none",
+        "export": true,
+        "pascalCaseDirectory": true,
+        "pascalCaseFiles": true
+      },
+      "component-story": {
+        "componentPath": "lib/TemplateName/TemplateName.tsx",
+        "project": "ui"
       },
       "library": {
         "style": "css",
