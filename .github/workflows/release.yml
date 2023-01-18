@@ -37,15 +37,16 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Log "github.base_ref"
+      - name: Log some github contexts
         run: |
           echo "GITHUB_BASE_REF: ${{ github.base_ref }}"
+          echo "GITHUB_HEAD_REF: ${{ github.head_ref }}"
+          echo "GITHUB_REF: ${{ github.ref }}"
+          echo "GITHUB_REF_NAME: ${{ github.ref_name }}"
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         id: setSHAs
         uses: nrwl/nx-set-shas@v3
-        with:
-          main-branch-name: ${{ github.base_ref }}
 
       - name: Detect package manager
         id: package_manager
