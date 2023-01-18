@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/rifandani/nxact/compare/ui-v1.1.0...ui-v1.2.0) (2023-01-18)
+
+
+### Features
+
+* add Button ui component ([78697fc](https://github.com/rifandani/nxact/commit/78697fce1f4156e20bca6f5a99ac2f4ce4d61a45))
+
 # [1.1.0](https://github.com/rifandani/nxact/compare/ui-v1.0.0...ui-v1.1.0) (2023-01-18)
 
 
