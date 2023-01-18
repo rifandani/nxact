@@ -27,20 +27,25 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Checkout [Default Branch]
         uses: actions/checkout@v3
         if: ${{ github.event_name != 'pull_request' }}
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        uses: nrwl/nx-set-shas@v3.0.1
+        id: setSHAs
+        uses: nrwl/nx-set-shas@v3
         with:
           main-branch-name: ${{ github.base_ref }}
+        run: |
+          echo "GITHUB_BASE_REF: ${{ github.base_ref }}"
+          echo "BASE: ${{ steps.setSHAs.outputs.base }}"
+          echo "HEAD: ${{ steps.setSHAs.outputs.head }}"
 
       - name: Detect package manager
         id: package_manager
@@ -127,7 +132,7 @@ jobs:
       - name: Release
         if: ${{ success() && (github.event_name != 'pull_request' || github.event.action == 'closed' && github.event.pull_request.merged == true) }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SVC_CLI_BOT_GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         # You can only release the updated projects by remove the --all option in the command below
         run: |
