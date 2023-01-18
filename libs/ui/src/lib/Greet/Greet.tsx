@@ -6,7 +6,7 @@ export interface GreetProps {
 
 export function Greet({ name }: GreetProps) {
   return (
-    <div className="text-blue-500 text-xl">
+    <div className="text-blue-600 text-xl">
       <h1>Hello there, {name}!</h1>
     </div>
   );
