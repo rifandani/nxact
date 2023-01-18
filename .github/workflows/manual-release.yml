@@ -47,4 +47,3 @@ jobs:
         # You can only release the updated projects by remove the --all option in the command below
         run: |
           npx nx affected --target release --all
-          npx semantic-release-plus
