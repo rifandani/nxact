@@ -1,0 +1,49 @@
+name: Manual Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  manual-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout [Default Branch]
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        id: setSHAs
+        uses: nrwl/nx-set-shas@v3
+
+      - name: Detect package manager
+        id: package_manager
+        run: |
+          echo "::set-output name=name::$([[ -f ./yarn.lock ]] && echo "yarn" || ([[ -f ./pnpm-lock.yaml ]] && echo "pnpm") || echo "npm")"
+
+      - name: Set node/npm/yarn versions using volta
+        uses: volta-cli/action@v4
+        with:
+          node-version: '${{ matrix.node-version }}'
+          npm-version: '${{ matrix.npm-version }}'
+          yarn-version: '${{ matrix.yarn-version }}'
+
+      - name: Install dependencies
+        run: |
+          echo "Running npm ci"
+          npm ci
+
+      - name: NX CI job ~ lint, test, build
+        run: |
+          npx nx affected --target lint --parallel 3
+          npx nx affected --target test --parallel 3 --ci --code-coverage
+          npx nx affected --target build --parallel 3
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN || github.token }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN || secrets.NPM_TOKEN2 }}
+        # You can only release the updated projects by remove the --all option in the command below
+        run: |
+          npx nx affected --target release

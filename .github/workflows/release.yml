@@ -10,7 +10,7 @@ env:
   HUSKY: 0
 
 jobs:
-  main:
+  release:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -135,7 +135,7 @@ jobs:
         if: ${{ success() && (github.event_name != 'pull_request' || github.event.action == 'closed' && github.event.pull_request.merged == true) }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN2 }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         # You can only release the updated projects by remove the --all option in the command below
         run: |
           npx nx affected --target release
