@@ -137,4 +137,4 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         # You can only release the updated projects by remove the --all option in the command below
         run: |
-          npx nx affected --target release --all
+          npx nx affected --target release
