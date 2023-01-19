@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import useMount from './useMount';
+import { useMount } from './useMount';
 
 describe('useMount', () => {
   it('test mount', () => {

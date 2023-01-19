@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react';
-import useUnmount from './useUnmount';
+import { useUnmount } from './useUnmount';
 
 describe('useUnmount', () => {
   it('useUnmount should work', () => {

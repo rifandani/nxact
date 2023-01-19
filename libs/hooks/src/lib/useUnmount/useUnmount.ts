@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import useLatest from '../useLatest/useLatest';
+import { useLatest } from '../useLatest/useLatest';
 
 /**
  * A hook that executes the function right before the component is unmounted.
@@ -12,7 +12,7 @@ import useLatest from '../useLatest/useLatest';
  * });
  * ```
  */
-export default function useUnmount(fn: () => void) {
+export function useUnmount(fn: () => void) {
   const ref = useLatest(fn);
 
   useEffect(

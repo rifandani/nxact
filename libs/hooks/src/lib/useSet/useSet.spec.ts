@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import useSet from './useSet';
+import { useSet } from './useSet';
 
 const setUp = <K>(initialSet?: Iterable<K>) =>
   renderHook(() => useSet(initialSet));
@@ -12,11 +12,8 @@ describe('useSet', () => {
     expect(set).toEqual(new Set([1, 2]));
     expect(utils).toStrictEqual({
       // test that the return output is a function
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       add: expect.any(Function),
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       remove: expect.any(Function),
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       reset: expect.any(Function),
     });
   });

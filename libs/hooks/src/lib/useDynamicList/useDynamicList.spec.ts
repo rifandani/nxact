@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import useDynamicList from './useDynamicList';
+import { useDynamicList } from './useDynamicList';
 
 describe('useDynamicList', () => {
   it('getKey should work', () => {
