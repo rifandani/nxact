@@ -27,7 +27,7 @@ type PickFunction<T extends Noop> = (
  * });
  * ```
  */
-export default function useMemoizedFn<T extends Noop>(fn: T) {
+export function useMemoizedFn<T extends Noop>(fn: T) {
   const ref = useRef<T>(fn);
 
   ref.current = useMemo(() => fn, [fn]);

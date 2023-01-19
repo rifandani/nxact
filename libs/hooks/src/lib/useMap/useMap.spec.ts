@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import useMap from './useMap';
+import { useMap } from './useMap';
 
 const setup = (initialMap?: Iterable<[string, string]>) =>
   renderHook(() => useMap(initialMap));
@@ -18,15 +18,10 @@ describe('useMap', () => {
     ]);
     expect(utils).toStrictEqual({
       // test that the return output is a function
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       get: expect.any(Function),
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       set: expect.any(Function),
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       setAll: expect.any(Function),
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       remove: expect.any(Function),
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       reset: expect.any(Function),
     });
   });

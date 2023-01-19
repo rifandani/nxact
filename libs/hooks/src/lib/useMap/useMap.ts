@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useMemoizedFn from '../useMemoizedFn/useMemoizedFn';
+import { useMemoizedFn } from '../useMemoizedFn/useMemoizedFn';
 
 /**
  * A hook that can manage the state of `Map`.
@@ -32,7 +32,7 @@ import useMemoizedFn from '../useMemoizedFn/useMemoizedFn';
  * );
  * ```
  */
-export default function useMap<K, T>(initialValue?: Iterable<readonly [K, T]>) {
+export function useMap<K, T>(initialValue?: Iterable<readonly [K, T]>) {
   const getInitValue = () =>
     initialValue === undefined ? new Map() : new Map(initialValue);
 

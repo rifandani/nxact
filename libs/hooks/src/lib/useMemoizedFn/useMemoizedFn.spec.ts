@@ -1,6 +1,6 @@
 import { act, renderHook, RenderHookResult } from '@testing-library/react';
 import { useState } from 'react';
-import useMemoizedFn from './useMemoizedFn';
+import { useMemoizedFn } from './useMemoizedFn';
 
 const useCount = () => {
   const [count, setCount] = useState(0);

@@ -38,7 +38,7 @@ import { useCallback, useRef, useState } from 'react';
  * );
  * ```
  */
-export default function useDynamicList<T>(initialList: T[] = []) {
+export function useDynamicList<T>(initialList: T[] = []) {
   const counterRef = useRef(-1);
 
   const keyList = useRef<number[]>([]);

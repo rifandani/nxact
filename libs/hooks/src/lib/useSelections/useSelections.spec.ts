@@ -1,5 +1,5 @@
 import { act, renderHook } from '@testing-library/react';
-import useSelections from './useSelections';
+import { useSelections } from './useSelections';
 
 const data = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 

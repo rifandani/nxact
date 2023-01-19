@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useMemoizedFn from '../useMemoizedFn/useMemoizedFn';
+import { useMemoizedFn } from '../useMemoizedFn/useMemoizedFn';
 
 /**
  * A hook that can manage the state of `Set`.
@@ -29,7 +29,7 @@ import useMemoizedFn from '../useMemoizedFn/useMemoizedFn';
  *  );
  * ```
  */
-export default function useSet<K>(initialValue?: Iterable<K>) {
+export function useSet<K>(initialValue?: Iterable<K>) {
   const getInitValue = () =>
     initialValue === undefined ? new Set<K>() : new Set(initialValue);
 
