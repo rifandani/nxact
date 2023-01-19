@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Outlined component should render correctly 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md text-primary border-primary bg-primary bg-opacity-0 hover:bg-opacity-20 disabled:border-gray-300 disabled:text-gray-300"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button Outlined component should render correctly when component is disabled 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md text-primary border-primary bg-primary bg-opacity-0 hover:bg-opacity-20 disabled:border-gray-300 disabled:text-gray-300"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button Outlined component should render correctly when there's no child component 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md text-primary border-primary bg-primary bg-opacity-0 hover:bg-opacity-20 disabled:border-gray-300 disabled:text-gray-300"
+/>
+`;
+
+exports[`Button Outlined component should render correctly with no rounded prop 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md text-primary border-primary bg-primary bg-opacity-0 hover:bg-opacity-20 disabled:border-gray-300 disabled:text-gray-300"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button Outlined component should render correctly with small prop 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-1.5 text-sm rounded text-primary border-primary bg-primary bg-opacity-0 hover:bg-opacity-20 disabled:border-gray-300 disabled:text-gray-300"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button Outlined component should render correctly with text child and type 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md text-primary border-primary bg-primary bg-opacity-0 hover:bg-opacity-20 disabled:border-gray-300 disabled:text-gray-300"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button Text component should render correctly 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md text-primary border-primary bg-primary bg-opacity-0 hover:bg-opacity-20 disabled:border-gray-300 disabled:text-gray-300"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button Text component should render correctly when component is disabled 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md text-primary hover:text-primary-dark disabled:text-gray-300 border-transparent bg-transparent"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button Text component should render correctly when there's no child component 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md text-primary hover:text-primary-dark disabled:text-gray-300 border-transparent bg-transparent"
+/>
+`;
+
+exports[`Button Text component should render correctly with small prop 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-1.5 text-sm rounded text-primary hover:text-primary-dark disabled:text-gray-300 border-transparent bg-transparent"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button Text component should render correctly with text child and type 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md text-primary hover:text-primary-dark disabled:text-gray-300 border-transparent bg-transparent"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button regular component should render correctly 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md border-primary bg-primary hover:bg-primary-dark hover:border-primary-dark text-white disabled:border-gray-100 disabled:text-gray-400 disabled:bg-gray-100"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button regular component should render correctly when component is disabled 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md border-primary bg-primary hover:bg-primary-dark hover:border-primary-dark text-white disabled:border-gray-100 disabled:text-gray-400 disabled:bg-gray-100"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button regular component should render correctly when there's no child component 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md border-primary bg-primary hover:bg-primary-dark hover:border-primary-dark text-white disabled:border-gray-100 disabled:text-gray-400 disabled:bg-gray-100"
+/>
+`;
+
+exports[`Button regular component should render correctly with no rounded prop 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md border-primary bg-primary hover:bg-primary-dark hover:border-primary-dark text-white disabled:border-gray-100 disabled:text-gray-400 disabled:bg-gray-100"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button regular component should render correctly with small prop 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-1.5 text-sm rounded border-primary bg-primary hover:bg-primary-dark hover:border-primary-dark text-white disabled:border-gray-100 disabled:text-gray-400 disabled:bg-gray-100"
+>
+  Button Text
+</button>
+`;
+
+exports[`Button regular component should render correctly with text child and type 1`] = `
+<button
+  className="inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold duration-200 disabled:pointer-events-none disabled:cursor-default py-[9px] text-base rounded-md border-primary bg-primary hover:bg-primary-dark hover:border-primary-dark text-white disabled:border-gray-100 disabled:text-gray-400 disabled:bg-gray-100"
+>
+  Button Text
+</button>
+`;

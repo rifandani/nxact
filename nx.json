@@ -51,6 +51,7 @@
       "component": {
         "project": "ui",
         "style": "none",
+        "directory": "lib/atoms",
         "export": true,
         "pascalCaseDirectory": true,
         "pascalCaseFiles": true

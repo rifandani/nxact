@@ -14,6 +14,10 @@ const config: StorybookViteConfig = {
     '../src/lib/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [...(rootMain.addons || [])],
+  framework: '@storybook/react',
+  features: {
+    storyStoreV7: true,
+  },
   async viteFinal(config) {
     return mergeConfig(config, {
       plugins: [
