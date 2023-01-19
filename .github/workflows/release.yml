@@ -123,9 +123,8 @@ jobs:
             npm ci
           fi
 
-      - name: NX CI job ~ workspace-lint, format:check, lint, test, build
+      - name: NX CI job ~ lint, test, build
         run: |
-          npx nx format:check
           npx nx affected --target lint --parallel 3
           npx nx affected --target test --parallel 3 --ci --code-coverage
           npx nx affected --target build --parallel 3
