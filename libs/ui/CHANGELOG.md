@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/rifandani/nxact/compare/ui-v1.2.2...ui-v1.3.0) (2023-01-19)
+
+
+### Features
+
+* **ui:** new Button ([6e5e1bb](https://github.com/rifandani/nxact/commit/6e5e1bb806e31a453288d62e6775af62551bcf28))
+
 ## [1.2.2](https://github.com/rifandani/nxact/compare/ui-v1.2.1...ui-v1.2.2) (2023-01-18)
 
 
