@@ -11,6 +11,7 @@ type IconProps = React.ComponentProps<'div'> & {
 };
 
 type BaseButtonProps = React.ComponentProps<'button'> & {
+  testId: string;
   size: Size;
   buttonType: ButtonType;
   variant: ColorVariant;
@@ -70,14 +71,18 @@ const textButtonVariantClasses = {
 };
 
 function BaseButton({
+  testId,
   size,
   buttonType,
   variant,
   rounded,
+  className,
   children,
+  ...props
 }: BaseButtonProps) {
   return (
     <button
+      data-testid={testId}
       className={cn(
         'inline-flex cursor-pointer items-center justify-center space-x-3 border border-solid px-4 font-semibold leading-none duration-200',
         'disabled:pointer-events-none disabled:cursor-default',
@@ -86,8 +91,10 @@ function BaseButton({
         buttonType === 'outlined' && outlinedButtonVariantClasses[variant],
         buttonType === 'text' && textButtonVariantClasses[variant],
         buttonTypeClasses[buttonType],
-        !rounded && 'rounded-none'
+        !rounded && 'rounded-none',
+        className
       )}
+      {...props}
     >
       {children}
     </button>
@@ -121,7 +128,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <BaseButton
-      data-testid={testId}
+      testId={testId}
       size={size}
       buttonType={buttonType}
       variant={variant}
@@ -136,7 +143,9 @@ export function Button({
           })}
         </Icon>
       )}
+
       {children}
+
       {!!rightIcon && (
         <Icon size={size}>
           {cloneElement(rightIcon as React.ReactElement, {
