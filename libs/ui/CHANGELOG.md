@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/rifandani/nxact/compare/ui-v1.3.0...ui-v1.4.0) (2023-01-26)
+
+
+### Bug Fixes
+
+* **ui:** spread props on button ([649b8f9](https://github.com/rifandani/nxact/commit/649b8f9e2383a6fd0d11d073c765604f81bbd024))
+
+
+### Features
+
+* **ui:** add Collapsible component ([a1725d7](https://github.com/rifandani/nxact/commit/a1725d7ca9074fe1005241fe4fb723733aeef197))
+
 # [1.3.0](https://github.com/rifandani/nxact/compare/ui-v1.2.2...ui-v1.3.0) (2023-01-19)
 
 
