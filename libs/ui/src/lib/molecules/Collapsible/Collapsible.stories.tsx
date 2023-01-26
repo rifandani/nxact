@@ -1,4 +1,5 @@
 import type { ComponentMeta, ComponentStoryFn } from '@storybook/react';
+import { useState } from 'react';
 import {
   Collapsible,
   CollapsibleContent,
@@ -6,12 +7,12 @@ import {
 } from './Collapsible';
 
 const Story: ComponentMeta<typeof Collapsible> = {
+  title: 'molecules/Collapsible',
   component: Collapsible,
   subcomponents: {
     CollapsibleTrigger,
     CollapsibleContent,
   },
-  title: 'Collapsible',
   argTypes: {
     asChild: {
       control: { type: 'boolean' },
@@ -30,37 +31,47 @@ const Story: ComponentMeta<typeof Collapsible> = {
 };
 export default Story;
 
-const CollapsibleTemplate: ComponentStoryFn<typeof Collapsible> = (args) => (
-  <Collapsible {...args} />
-);
-const TriggerTemplate: ComponentStoryFn<typeof CollapsibleTrigger> = (args) => (
-  <Collapsible>
-    <CollapsibleTrigger {...args} />
-  </Collapsible>
-);
-const ContentTemplate: ComponentStoryFn<typeof CollapsibleContent> = (args) => (
-  <Collapsible>
-    <CollapsibleContent {...args} />
-  </Collapsible>
-);
+const CollapsibleTemplate: ComponentStoryFn<typeof Collapsible> = (args) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen} {...args}>
+      <CollapsibleTrigger>Triggerer</CollapsibleTrigger>
+      <CollapsibleContent>Collapsible Content</CollapsibleContent>
+    </Collapsible>
+  );
+};
+
+const TriggerTemplate: ComponentStoryFn<typeof CollapsibleTrigger> = (args) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <CollapsibleTrigger {...args}>Triggerer</CollapsibleTrigger>
+    </Collapsible>
+  );
+};
+
+const ContentTemplate: ComponentStoryFn<typeof CollapsibleContent> = (args) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <CollapsibleContent {...args}>Collapsible Content</CollapsibleContent>
+    </Collapsible>
+  );
+};
 
 export const Default = CollapsibleTemplate.bind({});
 export const Trigger = TriggerTemplate.bind({});
 export const Content = ContentTemplate.bind({});
 
 Default.args = {
-  children: (
-    <>
-      <CollapsibleTrigger>Triggerer</CollapsibleTrigger>
-      <CollapsibleContent>Collapsible Content</CollapsibleContent>
-    </>
-  ),
   defaultOpen: false,
   open: false,
   disabled: false,
 };
 Trigger.args = {
-  children: 'Triggerer',
   asChild: false,
 };
 Content.args = {

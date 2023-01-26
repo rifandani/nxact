@@ -3,8 +3,8 @@ import { ColorVariant, Size } from '../../../types/common.type';
 import { Button } from './Button';
 
 const Story: ComponentMeta<typeof Button> = {
+  title: 'atoms/Button',
   component: Button,
-  title: 'Button',
   argTypes: {
     onClick: {
       action: 'clicked',
