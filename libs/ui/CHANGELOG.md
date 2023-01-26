@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/rifandani/nxact/compare/ui-v1.4.1...ui-v1.5.0) (2023-01-26)
+
+
+### Features
+
+* **ui:** add Icons atom component ([f50b749](https://github.com/rifandani/nxact/commit/f50b749bcc17fb959c79760f1b39d675f2fe64dd))
+
 ## [1.4.1](https://github.com/rifandani/nxact/compare/ui-v1.4.0...ui-v1.4.1) (2023-01-26)
 
 
