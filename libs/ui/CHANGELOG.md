@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/rifandani/nxact/compare/ui-v1.4.0...ui-v1.4.1) (2023-01-26)
+
+
+### Bug Fixes
+
+* **ui:** import Collapsible component ([0c35eb5](https://github.com/rifandani/nxact/commit/0c35eb553314c269ca4f62024c44f9d04aee7a6e))
+
 # [1.4.0](https://github.com/rifandani/nxact/compare/ui-v1.3.0...ui-v1.4.0) (2023-01-26)
 
 
