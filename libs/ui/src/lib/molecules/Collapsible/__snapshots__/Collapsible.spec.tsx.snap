@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button regular component should render correctly 1`] = `
+<div
+  data-state="closed"
+>
+  <button
+    aria-controls="radix-:r0:"
+    aria-expanded={false}
+    data-state="closed"
+    onClick={[Function]}
+    type="button"
+  >
+    Triggerer
+  </button>
+  <div
+    data-state="closed"
+    hidden={true}
+    id="radix-:r0:"
+    style={
+      Object {
+        "--radix-collapsible-content-height": undefined,
+        "--radix-collapsible-content-width": undefined,
+      }
+    }
+  />
+</div>
+`;
