@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/rifandani/nxact/compare/ui-v1.6.0...ui-v1.7.0) (2023-01-27)
+
+
+### Features
+
+* **ui:** add Avatar atom component ([4a27f7e](https://github.com/rifandani/nxact/commit/4a27f7ec1ffb289878ebef4a6d04ff891e40d5df))
+
 # [1.6.0](https://github.com/rifandani/nxact/compare/ui-v1.5.0...ui-v1.6.0) (2023-01-27)
 
 
