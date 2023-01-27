@@ -1,9 +1,4 @@
-import {
-  CheckboxProps,
-  CheckedState,
-  Indicator,
-  Root,
-} from '@radix-ui/react-checkbox';
+import { Indicator, Root } from '@radix-ui/react-checkbox';
 import React from 'react';
 
 import { cn } from 'libs/ui/src/utils/cn.util';
@@ -31,4 +26,4 @@ const Checkbox = React.forwardRef<
 
 Checkbox.displayName = Root.displayName;
 
-export { Checkbox, CheckboxProps, CheckedState };
+export { Checkbox };
