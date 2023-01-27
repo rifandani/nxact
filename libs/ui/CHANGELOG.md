@@ -1,3 +1,10 @@
+## [1.8.3](https://github.com/rifandani/nxact/compare/ui-v1.8.2...ui-v1.8.3) (2023-01-27)
+
+
+### Bug Fixes
+
+* **ui:** manual typing for Checkbox component ([3d25219](https://github.com/rifandani/nxact/commit/3d25219df0e7d90ba5e0fe09a79a58979c915cd3))
+
 ## [1.8.2](https://github.com/rifandani/nxact/compare/ui-v1.8.1...ui-v1.8.2) (2023-01-27)
 
 
