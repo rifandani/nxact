@@ -1,3 +1,10 @@
+## [1.8.4](https://github.com/rifandani/nxact/compare/ui-v1.8.3...ui-v1.8.4) (2023-01-27)
+
+
+### Bug Fixes
+
+* **ui:** manual typing Avatar component ([894a3da](https://github.com/rifandani/nxact/commit/894a3da06c1c5a34f86b3696c839d63431fb97fa))
+
 ## [1.8.3](https://github.com/rifandani/nxact/compare/ui-v1.8.2...ui-v1.8.3) (2023-01-27)
 
 
