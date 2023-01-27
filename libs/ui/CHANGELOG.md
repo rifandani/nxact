@@ -1,3 +1,11 @@
+## [1.8.1](https://github.com/rifandani/nxact/compare/ui-v1.8.0...ui-v1.8.1) (2023-01-27)
+
+
+### Bug Fixes
+
+* **ui:** move Checkbox lib to deps ([e4c6d61](https://github.com/rifandani/nxact/commit/e4c6d611aabff18a1fd9fc9561a91bf7f77876e1))
+* **ui:** move Collapsible lib to deps ([a0b83a4](https://github.com/rifandani/nxact/commit/a0b83a4035b1290a2c3661db851e9a67c4e53773))
+
 # [1.8.0](https://github.com/rifandani/nxact/compare/ui-v1.7.0...ui-v1.8.0) (2023-01-27)
 
 
