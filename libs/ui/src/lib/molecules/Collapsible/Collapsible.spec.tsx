@@ -5,7 +5,7 @@ import {
   CollapsibleTrigger,
 } from './Collapsible';
 
-describe('Button regular component', () => {
+describe('Collapsible component', () => {
   it('should render correctly', () => {
     const tree = renderer
       .create(
