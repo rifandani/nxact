@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/rifandani/nxact/compare/ui-v1.7.0...ui-v1.8.0) (2023-01-27)
+
+
+### Features
+
+* **ui:** add Accordion molecule component ([8ad8a9e](https://github.com/rifandani/nxact/commit/8ad8a9e1d3ca82e1d7266bf0f593e601014865ef))
+
 # [1.7.0](https://github.com/rifandani/nxact/compare/ui-v1.6.0...ui-v1.7.0) (2023-01-27)
 
 
