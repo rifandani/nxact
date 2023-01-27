@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar component should render correctly 1`] = `
+<span
+  className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+>
+  <span
+    className="flex h-full w-full items-center justify-center rounded-full bg-slate-100 dark:bg-slate-700"
+  >
+    RR
+  </span>
+</span>
+`;
+
+exports[`Avatar component should render fallback if no image component provided 1`] = `
+<span
+  className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+>
+  <span
+    className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full"
+  >
+    RR
+  </span>
+</span>
+`;
