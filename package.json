@@ -23,6 +23,7 @@
     "@nrwl/web": "15.5.1",
     "@nrwl/workspace": "15.5.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
+    "@radix-ui/react-checkbox": "^1.0.1",
     "@radix-ui/react-collapsible": "^1.0.1",
     "@rollup/plugin-url": "^7.0.0",
     "@storybook/addon-essentials": "^6.5.15",
