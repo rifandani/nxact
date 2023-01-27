@@ -18,6 +18,7 @@ export { default as Lock } from './SVG/Lock';
 export { default as Luggage } from './SVG/Luggage';
 export { default as MarkEmailRead } from './SVG/MarkEmailRead';
 export { default as Menu } from './SVG/Menu';
+export { default as Minus } from './SVG/Minus';
 export { default as Pencil } from './SVG/Pencil';
 export { default as PostAdd } from './SVG/PostAdd';
 export { default as Setting } from './SVG/Setting';
