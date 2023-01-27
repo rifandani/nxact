@@ -1,3 +1,16 @@
+# [1.6.0](https://github.com/rifandani/nxact/compare/ui-v1.5.0...ui-v1.6.0) (2023-01-27)
+
+
+### Bug Fixes
+
+* **ui:** collapsible snapshot ([600c671](https://github.com/rifandani/nxact/commit/600c6715d7af0fb4931bb7fa57a370e3c62694cf))
+
+
+### Features
+
+* **ui:** add Checkbox atom component ([fccc081](https://github.com/rifandani/nxact/commit/fccc08161fca6644f8090ed186f96fe2d42aed30))
+* **ui:** add Minus icon ([2d2f678](https://github.com/rifandani/nxact/commit/2d2f67867e8c88204ed17b242aad5ef79644433f))
+
 # [1.5.0](https://github.com/rifandani/nxact/compare/ui-v1.4.1...ui-v1.5.0) (2023-01-26)
 
 
