@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/rifandani/nxact/compare/ui-v1.8.1...ui-v1.8.2) (2023-01-27)
+
+
+### Bug Fixes
+
+* **ui:** manual typing for Collapsible ([7962942](https://github.com/rifandani/nxact/commit/796294257fa796cfc9c7daad6ae4d2d285e522e3))
+
 ## [1.8.1](https://github.com/rifandani/nxact/compare/ui-v1.8.0...ui-v1.8.1) (2023-01-27)
 
 
