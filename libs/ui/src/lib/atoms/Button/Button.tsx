@@ -1,33 +1,14 @@
-import { ColorVariant, Size } from 'libs/ui/src/types/common.type';
-import { cn } from 'libs/ui/src/utils/cn.util';
 import React, { cloneElement } from 'react';
+
 import '../../../index.css';
-
-// #region INTERFACES
-type ButtonType = 'solid' | 'outlined' | 'text';
-
-type IconProps = React.ComponentProps<'div'> & {
-  size: Size;
-};
-
-type BaseButtonProps = React.ComponentProps<'button'> & {
-  testId: string;
-  size: Size;
-  buttonType: ButtonType;
-  variant: ColorVariant;
-  rounded: boolean;
-};
-
-type ButtonProps = React.ComponentProps<'button'> & {
-  testId?: string;
-  size?: Size;
-  buttonType?: ButtonType;
-  variant?: ColorVariant;
-  rounded?: boolean;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
-};
-// #endregion
+import {
+  BaseButtonProps,
+  ButtonProps,
+  ColorVariant,
+  IconProps,
+  Size,
+} from '../../../types/button.type';
+import { cn } from '../../../utils/cn.util';
 
 const buttonSizeClasses = {
   small: 'py-1.5 text-sm rounded text-red-500',
