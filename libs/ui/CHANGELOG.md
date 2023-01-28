@@ -1,3 +1,10 @@
+## [1.8.7](https://github.com/rifandani/nxact/compare/ui-v1.8.6...ui-v1.8.7) (2023-01-28)
+
+
+### Bug Fixes
+
+* **ui:** adjust tsconfig lib files ([30cf326](https://github.com/rifandani/nxact/commit/30cf3265f7fa9fc175329b309676448e8ef6b377))
+
 ## [1.8.6](https://github.com/rifandani/nxact/compare/ui-v1.8.5...ui-v1.8.6) (2023-01-28)
 
 
