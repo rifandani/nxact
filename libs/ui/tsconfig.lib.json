@@ -6,7 +6,13 @@
   },
   "files": [
     "../../node_modules/@nrwl/react/typings/cssmodule.d.ts",
-    "../../node_modules/@nrwl/react/typings/image.d.ts"
+    "../../node_modules/@nrwl/react/typings/image.d.ts",
+    "../../node_modules/@radix-ui/react-primitive/dist/index.d.ts",
+    "../../node_modules/@radix-ui/react-context/dist/index.d.ts",
+    "../../node_modules/@radix-ui/react-collapsible/dist/index.d.ts",
+    "../../node_modules/@radix-ui/react-accordion/dist/index.d.ts",
+    "../../node_modules/@radix-ui/react-avatar/dist/index.d.ts",
+    "../../node_modules/@radix-ui/react-checkbox/dist/index.d.ts"
   ],
   "exclude": [
     "**/*.spec.ts",
