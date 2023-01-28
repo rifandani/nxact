@@ -45,7 +45,7 @@ exports[`Collapsible component should render correctly 1`] = `
     </h3>
     <div
       aria-labelledby="radix-:r0:"
-      className="overflow-hidden text-sm transition-all data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up"
+      className="data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden text-sm transition-all"
       data-orientation="vertical"
       data-state="closed"
       hidden={true}
@@ -101,7 +101,7 @@ exports[`Collapsible component should render correctly 1`] = `
     </h3>
     <div
       aria-labelledby="radix-:r2:"
-      className="overflow-hidden text-sm transition-all data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up"
+      className="data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden text-sm transition-all"
       data-orientation="vertical"
       data-state="closed"
       hidden={true}
@@ -157,7 +157,7 @@ exports[`Collapsible component should render correctly 1`] = `
     </h3>
     <div
       aria-labelledby="radix-:r4:"
-      className="overflow-hidden text-sm transition-all data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up"
+      className="data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden text-sm transition-all"
       data-orientation="vertical"
       data-state="closed"
       hidden={true}

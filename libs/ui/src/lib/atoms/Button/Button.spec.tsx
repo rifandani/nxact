@@ -1,5 +1,5 @@
 import { Button } from 'libs/ui/src/lib/atoms/Button/Button';
-import { Size } from 'libs/ui/src/types/common.type';
+import { Size } from 'libs/ui/src/types/button.type';
 import renderer from 'react-test-renderer';
 
 describe('Button regular component', () => {
