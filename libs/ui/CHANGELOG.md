@@ -1,3 +1,10 @@
+## [1.8.5](https://github.com/rifandani/nxact/compare/ui-v1.8.4...ui-v1.8.5) (2023-01-28)
+
+
+### Bug Fixes
+
+* **ui:** manual typing Accordion component ([91db5f4](https://github.com/rifandani/nxact/commit/91db5f44c921a4ded640928016cb8060a6853daa))
+
 ## [1.8.4](https://github.com/rifandani/nxact/compare/ui-v1.8.3...ui-v1.8.4) (2023-01-27)
 
 
