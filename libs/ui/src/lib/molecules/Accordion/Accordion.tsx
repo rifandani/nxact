@@ -1,15 +1,15 @@
 import * as AccordionPrimitive from '@radix-ui/react-accordion';
 import * as React from 'react';
 
+import '../../../index.css';
 import {
   AccordionContentProps,
   AccordionItemProps,
   AccordionMultipleProps,
   AccordionSingleProps,
   AccordionTriggerProps,
-} from 'libs/ui/src/types/accordion.type';
-import { cn } from 'libs/ui/src/utils/cn.util';
-import '../../../index.css';
+} from '../../../types/accordion.type';
+import { cn } from '../../../utils/cn.util';
 import { ChevronRight } from '../../atoms/Icon/Icon';
 
 const Accordion = AccordionPrimitive.Root as React.ForwardRefExoticComponent<
@@ -57,7 +57,7 @@ const AccordionContent = React.forwardRef(
     <AccordionPrimitive.Content
       ref={ref}
       className={cn(
-        'overflow-hidden text-sm transition-all data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up',
+        'data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden text-sm transition-all',
         className
       )}
       {...props}
