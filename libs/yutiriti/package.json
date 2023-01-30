@@ -1,0 +1,37 @@
+{
+  "name": "@rifandani/nxact-yutiriti",
+  "version": "0.0.0",
+  "description": "A collection of common useful lodash-like utils.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rifandani/nxact.git",
+    "directory": "libs/yutiriti"
+  },
+  "bugs": {
+    "url": "https://github.com/rifandani/nxact/issues"
+  },
+  "homepage": "https://github.com/rifandani/nxact#readme",
+  "author": "Rifandani",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "nx",
+    "monorepo",
+    "react"
+  ],
+  "engines": {
+    "node": ">=16.x",
+    "npm": ">=8.x"
+  },
+  "type": "commonjs",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.js"
+    }
+  }
+}

@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nxact/yutiriti/*": ["libs/yutiriti/src/index.ts"],
       "@nxact/hooks/*": ["libs/hooks/src/index.ts"],
       "@nxact/ui/*": ["libs/ui/src/index.ts"]
     }
