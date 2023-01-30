@@ -1,4 +1,3 @@
-import { assert } from 'chai';
 import * as _ from './series';
 
 describe('series module', () => {
@@ -14,85 +13,85 @@ describe('series module', () => {
   describe('min function', () => {
     test('correctly returns min', () => {
       const result = sut.min('monday', 'tuesday');
-      assert.equal(result, 'monday');
+      expect(result).toEqual('monday');
     });
     test('correctly returns min when second arg', () => {
       const result = sut.min('tuesday', 'monday');
-      assert.equal(result, 'monday');
+      expect(result).toEqual('monday');
     });
   });
 
   describe('max function', () => {
     test('correctly returns max', () => {
       const result = sut.max('thursday', 'tuesday');
-      assert.equal(result, 'thursday');
+      expect(result).toEqual('thursday');
     });
     test('correctly returns max when second arg', () => {
       const result = sut.max('tuesday', 'thursday');
-      assert.equal(result, 'thursday');
+      expect(result).toEqual('thursday');
     });
   });
 
   describe('first function', () => {
     test('returns first item', () => {
       const result = sut.first();
-      assert.equal(result, 'monday');
+      expect(result).toEqual('monday');
     });
   });
 
   describe('last function', () => {
     test('returns last item', () => {
       const result = sut.last();
-      assert.equal(result, 'friday');
+      expect(result).toEqual('friday');
     });
   });
 
   describe('next function', () => {
     test('returns next item', () => {
       const result = sut.next('wednesday');
-      assert.equal(result, 'thursday');
+      expect(result).toEqual('thursday');
     });
     test('returns first given last exhausted', () => {
       const result = sut.next('friday');
-      assert.equal(result, 'monday');
+      expect(result).toEqual('monday');
     });
     test('returns the given default when the last is exhausted', () => {
       const result = sut.next('friday', 'wednesday');
-      assert.equal(result, 'wednesday');
+      expect(result).toEqual('wednesday');
     });
   });
 
   describe('previous function', () => {
     test('returns previous item', () => {
       const result = sut.previous('wednesday');
-      assert.equal(result, 'tuesday');
+      expect(result).toEqual('tuesday');
     });
     test('returns last given first exhausted', () => {
       const result = sut.previous('monday');
-      assert.equal(result, 'friday');
+      expect(result).toEqual('friday');
     });
     test('returns the given default when the first is exhausted', () => {
       const result = sut.previous('monday', 'wednesday');
-      assert.equal(result, 'wednesday');
+      expect(result).toEqual('wednesday');
     });
   });
 
   describe('spin function', () => {
     test('returns current given zero', () => {
       const result = sut.spin('wednesday', 0);
-      assert.equal(result, 'wednesday');
+      expect(result).toEqual('wednesday');
     });
     test('returns friday given -3 starting at wednesday', () => {
       const result = sut.spin('wednesday', -3);
-      assert.equal(result, 'friday');
+      expect(result).toEqual('friday');
     });
     test('returns monday given 3 starting at wednesday', () => {
       const result = sut.spin('wednesday', 3);
-      assert.equal(result, 'monday');
+      expect(result).toEqual('monday');
     });
     test('returns monday given 13 starting at wednesday', () => {
       const result = sut.spin('wednesday', 13);
-      assert.equal(result, 'monday');
+      expect(result).toEqual('monday');
     });
   });
 });
