@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { assert } from 'chai';
 import * as _array from '../array/array';
 import * as _ from './async';
 import { AggregateError } from './async';
@@ -20,7 +19,7 @@ describe('async module', () => {
         return new Promise((res) => res(a + b));
       };
       const result = await _.reduce<number, number>(numbers, asyncSum, 0);
-      assert.equal(result, 10);
+      expect(result).toEqual(10);
     });
   });
 
@@ -31,19 +30,19 @@ describe('async module', () => {
         return new Promise((res) => res(a * a));
       };
       const result = await _.map<number, number>(numbers, asyncSquare);
-      assert.deepEqual(result, [1, 4, 9, 16]);
+      expect(result).toEqual([1, 4, 9, 16]);
     });
 
     test('handles null input', async () => {
       const result = await _.map(null as unknown as unknown[], async () => '');
-      assert.deepEqual(result, []);
+      expect(result).toEqual([]);
     });
 
     test('passes correct indexes', async () => {
       const array = ['a', 'b', 'c', 'd'];
       const mapper = async (l: string, index: number) => `${l}${index}`;
       const result = await _.map(array, mapper);
-      assert.deepEqual(result, ['a0', 'b1', 'c2', 'd3']);
+      expect(result).toEqual(['a0', 'b1', 'c2', 'd3']);
     });
   });
 
@@ -55,32 +54,32 @@ describe('async module', () => {
 
     test('calls asyncReduce', async () => {
       const result = await _.reduce<number, number>(numbers, reducer, 0);
-      assert.equal(result, 10);
+      expect(result).toEqual(10);
     });
 
     test('uses first item in array when no init provided', async () => {
       const result = await _.reduce(numbers, reducer);
-      assert.equal(result, 10);
+      expect(result).toEqual(10);
     });
 
     test('throws on no init value and an empty array', async () => {
       try {
         await _.reduce([], reducer);
       } catch (err) {
-        assert.isNotNull(err);
+        expect(err).not.toBeNull();
         return;
       }
-      assert.fail('Expected error to be thrown');
+      expect(false).toBe(true);
     });
 
     test('throws on no init value and a null array input', async () => {
       try {
         await _.reduce(null as unknown as number[], reducer);
       } catch (err) {
-        assert.isNotNull(err);
+        expect(err).not.toBeNull();
         return;
       }
-      assert.fail('Expected error to be thrown');
+      expect(false).toBe(true);
     });
   });
 
@@ -92,7 +91,7 @@ describe('async module', () => {
           val = 1;
         });
       });
-      assert.equal(val, 1);
+      expect(val).toEqual(1);
     });
 
     test('returns the resulting value of the given function', async () => {
@@ -103,8 +102,8 @@ describe('async module', () => {
         });
         return 'x';
       });
-      assert.equal(val, 1);
-      assert.equal(result, 'x');
+      expect(val).toEqual(1);
+      expect(result).toEqual('x');
     });
 
     test('calls all registered defer functions', async () => {
@@ -123,10 +122,10 @@ describe('async module', () => {
         });
         return 'x';
       });
-      assert.equal(one, 1);
-      assert.equal(two, 2);
-      assert.equal(three, 3);
-      assert.equal(result, 'x');
+      expect(one).toEqual(1);
+      expect(two).toEqual(2);
+      expect(three).toEqual(3);
+      expect(result).toEqual('x');
     });
 
     test('calls all registered defer functions when error is thrown', async () => {
@@ -148,12 +147,11 @@ describe('async module', () => {
           if (isTruthy) throw new Error('soooo broken');
           return 'x';
         });
-      } catch (err) {
-        console.error('FIXME: unexpected error');
-      }
-      assert.equal(one, 1);
-      assert.equal(two, 2);
-      assert.equal(three, 3);
+        // eslint-disable-next-line no-empty
+      } catch {}
+      expect(one).toEqual(1);
+      expect(two).toEqual(2);
+      expect(three).toEqual(3);
     });
 
     test('throws the error', async () => {
@@ -165,8 +163,8 @@ describe('async module', () => {
       } catch (err: any) {
         error = err;
       }
-      assert.isNotNull(error);
-      assert.equal(error?.message, 'soooo broken');
+      expect(error).not.toBeNull();
+      expect(error?.message).toEqual('soooo broken');
     });
 
     test('rethrows the rethrown error when rethrow is true', async () => {
@@ -183,8 +181,8 @@ describe('async module', () => {
       } catch (err: any) {
         error = err;
       }
-      assert.isNotNull(error);
-      assert.equal(error?.message, 'soooo broken');
+      expect(error).not.toBeNull();
+      expect(error?.message).toEqual('soooo broken');
     });
 
     test('does not rethrow the rethrown error when rethrow is false', async () => {
@@ -201,7 +199,7 @@ describe('async module', () => {
       } catch (err: any) {
         error = err;
       }
-      assert.isNull(error);
+      expect(error).toBeNull();
     });
 
     test('does not rethrow the rethrown error by default', async () => {
@@ -215,14 +213,14 @@ describe('async module', () => {
       } catch (err: any) {
         error = err;
       }
-      assert.isNull(error);
+      expect(error).toBeNull();
     });
 
     test('returns awaited async results', async () => {
       const result = await _.defer(() => {
         return new Promise<string>((res) => res('x'));
       });
-      assert.equal(result, 'x');
+      expect(result).toEqual('x');
     });
   });
 
@@ -231,22 +229,22 @@ describe('async module', () => {
       const [err, result] = await _.tryit(async () => {
         throw new Error('not good enough');
       })();
-      assert.isUndefined(result);
-      assert.isNotNull(err);
-      assert.equal(err?.message, 'not good enough');
+      expect(result).not.toBeDefined();
+      expect(err).not.toBeNull();
+      expect(err?.message).toEqual('not good enough');
     });
 
     test('returns result when no error is thrown', async () => {
       const [err, result] = await _.tryit(async () => {
         return 'hello';
       })();
-      assert.isUndefined(err);
-      assert.isNotNull(result);
-      assert.equal(result, 'hello');
+      expect(err).not.toBeDefined();
+      expect(result).not.toBeNull();
+      expect(result).toEqual('hello');
     });
 
     test('alias exists', () => {
-      assert.isNotNull(_.tryit);
+      expect(_.tryit).not.toBeNull();
     });
   });
 
@@ -256,7 +254,7 @@ describe('async module', () => {
       const before = Date.now();
       await _.sleep(ONE_SECOND);
       const after = Date.now();
-      assert.isAtLeast(after, before + ONE_SECOND);
+      expect(after).toBeGreaterThanOrEqual(before + ONE_SECOND);
     });
   });
 
@@ -284,8 +282,8 @@ describe('async module', () => {
         errors.push(e as Error);
       }
       const aggregate = new AggregateError(errors);
-      assert.include(aggregate.stack, 'at fakeMicrotask');
-      assert.include(aggregate.message, 'with 1');
+      expect(aggregate.stack).toContain('at fakeMicrotask');
+      expect(aggregate.message).toContain('with 1');
     });
 
     test('uses stack from first error with a stack', () => {
@@ -296,9 +294,9 @@ describe('async module', () => {
         errors.push(e as Error);
       }
       const aggregate = new AggregateError(errors);
-      assert.equal(aggregate.name, 'AggregateError(MicrotaskError...)');
-      assert.include(aggregate.stack, 'at fakeMicrotask');
-      assert.include(aggregate.message, 'with 2');
+      expect(aggregate.name).toEqual('AggregateError(MicrotaskError...)');
+      expect(aggregate.stack).toContain('at fakeMicrotask');
+      expect(aggregate.message).toContain('with 2');
     });
 
     test('does not fail if no errors given', () => {
@@ -315,8 +313,8 @@ describe('async module', () => {
           return `hi_${num}`;
         });
       })();
-      assert.isUndefined(errors);
-      assert.deepEqual(results, ['hi_1', 'hi_2', 'hi_3']);
+      expect(errors).not.toBeDefined();
+      expect(results).toEqual(['hi_1', 'hi_2', 'hi_3']);
     });
 
     test('throws erros as array of all errors', async () => {
@@ -328,9 +326,9 @@ describe('async module', () => {
         });
       })();
       const err = error as AggregateError;
-      assert.isUndefined(results);
-      assert.equal(err.errors.length, 1);
-      assert.equal(err.errors[0].message, 'number is 2');
+      expect(results).not.toBeDefined();
+      expect(err.errors.length).toEqual(1);
+      expect(err.errors[0].message).toEqual('number is 2');
     });
 
     test('does not run more than the limit at once', async () => {
@@ -342,7 +340,7 @@ describe('async module', () => {
         await _.sleep(300);
         numInProgress--;
       });
-      assert.deepEqual(Math.max(...tracking), 3);
+      expect(Math.max(...tracking)).toEqual(3);
     });
   });
 
@@ -359,14 +357,14 @@ describe('async module', () => {
       const result = await _.retry(NULL, async () => {
         return 'hello';
       });
-      assert.equal(result, 'hello');
+      expect(result).toEqual('hello');
     });
 
     test('simple + quick + happy path', async () => {
       const result = await _.retry(NULL, async () => {
         return 'hello';
       });
-      assert.equal(result, 'hello');
+      expect(result).toEqual('hello');
     });
 
     test('retries on failure', async () => {
@@ -378,7 +376,7 @@ describe('async module', () => {
         }
         return 'hello';
       });
-      assert.equal(result, 'hello');
+      expect(result).toEqual('hello');
     });
 
     test('quits on bail', async () => {
@@ -387,10 +385,10 @@ describe('async module', () => {
           bail('iquit');
         });
       } catch (err) {
-        assert.equal(err, 'iquit');
+        expect(err).toEqual('iquit');
         return;
       }
-      assert.fail('error should have been thrown');
+      expect(false).toBe(true);
     });
 
     test('quits after max retries', async () => {
@@ -399,10 +397,10 @@ describe('async module', () => {
           throw 'quitagain';
         });
       } catch (err) {
-        assert.equal(err, 'quitagain');
+        expect(err).toEqual('quitagain');
         return;
       }
-      assert.fail('error should have been thrown');
+      expect(false).toBe(true);
     });
 
     test('quits after max retries without delay', async () => {
@@ -412,10 +410,10 @@ describe('async module', () => {
         };
         await _.retry({ times: 3 }, func);
       } catch (err) {
-        assert.equal(err, 'quitagain');
+        expect(err).toEqual('quitagain');
         return;
       }
-      assert.fail('error should have been thrown');
+      expect(false).toBe(true);
     });
 
     test('quits after max retries with delay', async () => {
@@ -425,10 +423,10 @@ describe('async module', () => {
         };
         await _.retry({ delay: 100 }, func);
       } catch (err) {
-        assert.equal(err, 'quitagain');
+        expect(err).toEqual('quitagain');
         return;
       }
-      assert.fail('error should have been thrown');
+      expect(false).toBe(true);
     });
 
     test('uses backoff between retries', async () => {
@@ -449,7 +447,7 @@ describe('async module', () => {
         }
       );
       const diff = Date.now() - start;
-      assert.equal(count, 3);
+      expect(count).toEqual(3);
       // Time taken should at least be the
       // total ms backed off. Using exponential
       // backoff (above) 3 times (passing on
@@ -457,7 +455,7 @@ describe('async module', () => {
       //   - 10**1 + 10**2 = 1025
       // The performance typically comes in 1
       // or 2 milliseconds after.
-      assert.isAtLeast(diff, backoffs);
+      expect(diff).toBeGreaterThanOrEqual(backoffs);
     });
   });
 });

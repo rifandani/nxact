@@ -1,91 +1,90 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { assert } from 'chai';
 import * as _ from './string';
 
 describe('string module', () => {
   describe('camel function', () => {
     test('returns correctly cased string', () => {
       const result = _.camel('hello world');
-      assert.equal(result, 'helloWorld');
+      expect(result).toEqual('helloWorld');
     });
     test('returns single word', () => {
       const result = _.camel('hello');
-      assert.equal(result, 'hello');
+      expect(result).toEqual('hello');
     });
     test('returns empty string for empty input', () => {
       const result = _.camel(null as any);
-      assert.equal(result, '');
+      expect(result).toEqual('');
     });
     test('a word in camel case should remain in camel case', () => {
       const result = _.camel('helloWorld');
-      assert.equal(result, 'helloWorld');
+      expect(result).toEqual('helloWorld');
     });
   });
 
   describe('camelCase function', () => {
     test('returns non alphanumerics with -space and capital', () => {
       const result = _.camel('Exobase Starter_flash AND-go');
-      assert.equal(result, 'exobaseStarterFlashAndGo');
+      expect(result).toEqual('exobaseStarterFlashAndGo');
     });
   });
 
   describe('snake function', () => {
     test('returns correctly cased string', () => {
       const result = _.snake('hello world');
-      assert.equal(result, 'hello_world');
+      expect(result).toEqual('hello_world');
     });
     test('must handle strings that are camelCase', () => {
       const result = _.snake('helloWorld');
-      assert.equal(result, 'hello_world');
+      expect(result).toEqual('hello_world');
     });
     test('must handle strings that are dash', () => {
       const result = _.snake('hello-world');
-      assert.equal(result, 'hello_world');
+      expect(result).toEqual('hello_world');
     });
     test('returns single word', () => {
       const result = _.snake('hello');
-      assert.equal(result, 'hello');
+      expect(result).toEqual('hello');
     });
     test('returns empty string for empty input', () => {
       const result = _.snake(null as any);
-      assert.equal(result, '');
+      expect(result).toEqual('');
     });
   });
 
   describe('snakeCase function', () => {
     test('returns non alphanumerics with _', () => {
       const result = _.snake('Exobase Starter_flash AND-go');
-      assert.equal(result, 'exobase_starter_flash_and_go');
+      expect(result).toEqual('exobase_starter_flash_and_go');
     });
   });
 
   describe('dash function', () => {
     test('returns correctly cased string', () => {
       const result = _.dash('hello world');
-      assert.equal(result, 'hello-world');
+      expect(result).toEqual('hello-world');
     });
     test('returns single word', () => {
       const result = _.dash('hello');
-      assert.equal(result, 'hello');
+      expect(result).toEqual('hello');
     });
     test('returns empty string for empty input', () => {
       const result = _.dash(null as any);
-      assert.equal(result, '');
+      expect(result).toEqual('');
     });
     test('must handle strings that are camelCase', () => {
       const result = _.dash('helloWorld');
-      assert.equal(result, 'hello-world');
+      expect(result).toEqual('hello-world');
     });
     test('must handle strings that are dash', () => {
       const result = _.dash('hello-world');
-      assert.equal(result, 'hello-world');
+      expect(result).toEqual('hello-world');
     });
   });
 
   describe('dashCase function', () => {
     test('returns non alphanumerics with -', () => {
       const result = _.dash('Exobase Starter_flash AND-go');
-      assert.equal(result, 'exobase-starter-flash-and-go');
+      expect(result).toEqual('exobase-starter-flash-and-go');
     });
   });
 
@@ -111,7 +110,7 @@ describe('string module', () => {
     Thank You - ${data.name}
   `;
 
-      assert.equal(result, expected);
+      expect(result).toEqual(expected);
     });
 
     test('replaces all occurrences given template', () => {
@@ -121,70 +120,67 @@ describe('string module', () => {
       };
 
       const result = _.template(tmp, data, /<(.+?)>/g);
-      assert.equal(result, `Hello ${data.name}.`);
+      expect(result).toEqual(`Hello ${data.name}.`);
     });
   });
 
   describe('capitalize function', () => {
     test('handles null', () => {
       const result = _.capitalize(null as any);
-      assert.equal(result, '');
+      expect(result).toEqual('');
     });
     test('converts hello as Hello', () => {
       const result = _.capitalize('hello');
-      assert.equal(result, 'Hello');
+      expect(result).toEqual('Hello');
     });
     test('converts hello Bob as Hello bob', () => {
       const result = _.capitalize('hello Bob');
-      assert.equal(result, 'Hello bob');
+      expect(result).toEqual('Hello bob');
     });
   });
 
   describe('pascal function', () => {
     test('returns non alphanumerics in pascal', () => {
       const result = _.pascal('Exobase Starter_flash AND-go');
-      assert.equal(result, 'ExobaseStarterFlashAndGo');
+      expect(result).toEqual('ExobaseStarterFlashAndGo');
     });
     test('returns single word', () => {
       const result = _.pascal('hello');
-      assert.equal(result, 'Hello');
+      expect(result).toEqual('Hello');
     });
     test('returns empty string for empty input', () => {
       const result = _.pascal(null as any);
-      assert.equal(result, '');
+      expect(result).toEqual('');
     });
   });
 
   describe('title function', () => {
     test('returns input formatted in title case', () => {
-      assert.equal(_.title('hello world'), 'Hello World');
-      assert.equal(_.title('va_va_boom'), 'Va Va Boom');
-      assert.equal(_.title('root-hook   -  ok!'), 'Root Hook Ok!');
-      assert.equal(_.title('queryItems'), 'Query Items');
-      assert.equal(
-        _.title('queryAllItems-in_Database'),
-        'Query All Items In Database'
-      );
+      expect(_.title('hello world')).toEqual('Hello World');
+      expect(_.title('va_va_boom')).toEqual('Va Va Boom');
+      expect(_.title('root-hook   -  ok!')).toEqual('Root Hook Ok!');
+      expect(_.title('queryItems')).toEqual('Query Items');
+      expect(_.title('queryAllItems-in_Database')).toEqual('Query All Items In Database');
     });
     test('returns empty string for bad input', () => {
-      assert.equal(_.title(null), '');
-      assert.equal(_.title(undefined), '');
+      expect(_.title(null)).toEqual('');
+      expect(_.title(undefined)).toEqual('');
     });
   });
 
   describe('trim function', () => {
     test('handles bad input', () => {
-      assert.equal(_.trim(null), '');
-      assert.equal(_.trim(undefined), '');
+      expect(_.trim(null)).toEqual('');
+      expect(_.trim(undefined)).toEqual('');
     });
     test('returns input string correctly trimmed', () => {
-      assert.equal(_.trim('\n\n\t\nhello\n\t  \n', '\n\t '), 'hello');
-      assert.equal(_.trim('hello', 'x'), 'hello');
-      assert.equal(_.trim(' hello  '), 'hello');
-      assert.equal(_.trim(' __hello__  ', '_'), ' __hello__  ');
-      assert.equal(_.trim('__hello__', '_'), 'hello');
-      assert.equal(_.trim('//repos////', '/'), 'repos');
-      assert.equal(_.trim('/repos/:owner/:repo/', '/'), 'repos/:owner/:repo');
+      expect(_.trim('\n\n\t\nhello\n\t  \n', '\n\t ')).toEqual('hello');
+      expect(_.trim('hello', 'x')).toEqual('hello');
+      expect(_.trim(' hello  ')).toEqual('hello');
+      expect(_.trim(' __hello__  ', '_')).toEqual(' __hello__  ');
+      expect(_.trim('__hello__', '_')).toEqual('hello');
+      expect(_.trim('//repos////', '/')).toEqual('repos');
+      expect(_.trim('/repos/:owner/:repo/', '/')).toEqual('repos/:owner/:repo');
     });
   });
 });
