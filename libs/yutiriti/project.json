@@ -38,6 +38,14 @@
           "codeCoverage": true
         }
       }
+    },
+    "release": {
+      "executor": "nx:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "npx semantic-release-plus --extends ./libs/yutiriti/release.config.js --verbose",
+        "parallel": false
+      }
     }
   },
   "tags": []
