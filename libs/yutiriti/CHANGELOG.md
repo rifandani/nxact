@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/rifandani/nxact/compare/yutiriti-v1.0.0...yutiriti-v1.1.0) (2023-01-31)
+
+
+### Features
+
+* **yutiriti:** add some remeda functions ([60fb58f](https://github.com/rifandani/nxact/commit/60fb58ffdbd17565c1edbcb121c8f6ad8ff38267))
+
 # 1.0.0 (2023-01-31)
 
 
