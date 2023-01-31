@@ -748,4 +748,43 @@ describe('array module', () => {
       expect(result).toEqual(['b', 'a']);
     });
   });
+
+  describe('splitAt function', () => {
+    test('data first should be correct', () => {
+      expect(_.splitAt([1, 2, 3] as const, 1)).toEqual([[1], [2, 3]]);
+    });
+
+    test('data first split at -1', () => {
+      expect(_.splitAt([1, 2, 3, 4, 5] as const, -1)).toEqual([
+        [1, 2, 3, 4],
+        [5],
+      ]);
+    });
+  });
+
+  describe('splitWhen function', () => {
+    it('should split array', () => {
+      expect(_.splitWhen([1, 2, 3, 1, 2, 3] as const, (x) => x === 2)).toEqual([
+        [1],
+        [2, 3, 1, 2, 3],
+      ]);
+    });
+
+    it('should with no matches', () => {
+      const n = 1232 as number;
+
+      expect(_.splitWhen([1, 2, 3, 1, 2, 3] as const, (x) => x === n)).toEqual([
+        [1, 2, 3, 1, 2, 3],
+        [],
+      ]);
+    });
+  });
+
+  describe('takeWhile function', () => {
+    test('data first should works', () => {
+      expect(
+        _.takeWhile([1, 2, 3, 4, 3, 2, 1] as const, (x) => x !== 4)
+      ).toEqual([1, 2, 3]);
+    });
+  });
 });

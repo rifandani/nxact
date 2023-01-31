@@ -15,3 +15,9 @@ export type DebounceFunction<TArgs extends any[]> = {
    */
   flush(...args: TArgs): void;
 };
+
+export type AssertEqual<Type, Expected> = Array<Type> extends Array<Expected>
+  ? Array<Expected> extends Array<Type>
+    ? true
+    : never
+  : never;

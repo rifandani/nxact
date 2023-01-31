@@ -557,3 +557,45 @@ export const construct = <TObject extends object>(obj: TObject): object => {
     return set(acc, path, (obj as any)[path]);
   }, {});
 };
+
+/**
+ * Creates a new object from an array of tuples by pairing up first and second elements as {[key]: value}.
+ * If a tuple is not supplied for any element in the array, the element will be ignored
+ * If duplicate keys exist, the tuple with the greatest index in the input array will be preferred.
+ *
+ * @param tuples the list of input tuples
+ * @example
+ *
+ * ```ts
+ * fromPairs([['a', 'b'], ['c', 'd']]) // => {a: 'b', c: 'd'}
+ * ```
+ */
+export function fromPairs<V>(
+  tuples: ReadonlyArray<[number, V]>
+): Record<number, V>;
+export function fromPairs<V>(
+  tuples: ReadonlyArray<[string, V]>
+): Record<string, V>;
+
+export function fromPairs(tuples: ReadonlyArray<[string | number, unknown]>) {
+  return tuples.reduce<Record<string | number, unknown>>((acc, curr) => {
+    if (curr && curr.length === 2) {
+      acc[curr[0]] = curr[1];
+    }
+
+    return acc;
+  }, {});
+}
+
+/**
+ * Returns an array of key/values of the enumerable properties of an object.
+ *
+ * @example
+ *
+ * ```ts
+ * toPairs({ a: 1, b: 2, c: 3 }) // => [['a', 1], ['b', 2], ['c', 3]]
+ * ```
+ */
+export function toPairs<T>(object: { [s: string]: T }): Array<[string, T]> {
+  return Object.entries(object);
+}

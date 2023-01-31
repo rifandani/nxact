@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
+import { AssertEqual } from '../../types/common.type';
 import * as _ from './typed';
 
 describe('typed module', () => {
@@ -502,7 +503,9 @@ describe('typed module', () => {
       expect(_.isEqual(now, now)).toBe(true);
       expect(_.isEqual([], [])).toBe(true);
       expect(_.isEqual(complex, { ...complex })).toBe(true);
-      expect(_.isEqual([complex, complex], [{ ...complex }, { ...complex }])).toBe(true);
+      expect(
+        _.isEqual([complex, complex], [{ ...complex }, { ...complex }])
+      ).toBe(true);
     });
 
     test('returns false for non-equal things', () => {
@@ -512,10 +515,34 @@ describe('typed module', () => {
       expect(_.isEqual(Symbol('hello'), Symbol('goodbye'))).toBe(false);
       expect(_.isEqual({ z: 23 }, { a: 1 })).toBe(false);
       expect(_.isEqual(true, false)).toBe(false);
-      expect(_.isEqual(new Date(), new Date('2022-09-01T03:25:12.750Z'))).toBe(false);
+      expect(_.isEqual(new Date(), new Date('2022-09-01T03:25:12.750Z'))).toBe(
+        false
+      );
       expect(_.isEqual([], [1])).toBe(false);
       expect(_.isEqual(complex, { ...complex, num: 222 })).toBe(false);
       expect(_.isEqual([complex], [{ ...complex, num: 222 }])).toBe(false);
+    });
+  });
+
+  describe('isPromise function', () => {
+    test('should work as type guard', () => {
+      const data = Promise.resolve(5);
+      const result: AssertEqual<typeof data, Promise<number>> = true;
+
+      if (_.isPromise(data)) {
+        expect(data instanceof Promise).toEqual(true);
+        expect(result).toEqual(true);
+      }
+    });
+
+    test('should work as type guard in filter', () => {
+      const data = [Promise.resolve(5), [1, 2, 3], false, () => {}].filter(
+        _.isPromise
+      );
+      const result: AssertEqual<typeof data, Promise<number>[]> = true;
+
+      expect(data.every((c) => c instanceof Promise)).toEqual(true);
+      expect(result).toEqual(true);
     });
   });
 });
