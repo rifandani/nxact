@@ -191,3 +191,19 @@ export const isEqual = <TType>(x: TType, y: TType): boolean => {
 
   return true;
 };
+
+/**
+ * A function that checks if the passed parameter is a Promise and narrows its type accordingly
+ *
+ * @param data the variable to check
+ * @example
+ *
+ * ```ts
+ * isPromise(Promise.resolve(5)) // => true
+ * isPromise(Promise.reject(5)) // => true
+ * isPromise('somethingElse') // => false
+ * ```
+ */
+export function isPromise<T, S>(data: Promise<T> | S): data is Promise<T> {
+  return data instanceof Promise;
+}

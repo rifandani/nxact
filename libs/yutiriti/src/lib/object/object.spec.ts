@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
+import { AssertEqual } from '../../types/common.type';
 import * as _ from './object';
 
 const NULL = null as unknown as {};
@@ -538,6 +539,66 @@ describe('object module', () => {
           timestamp: now,
         })
       ).toEqual(ra);
+    });
+  });
+
+  describe('fromPairs function', () => {
+    const tuples: [string, number][] = [
+      ['a', 1],
+      ['b', 2],
+      ['c', 3],
+    ];
+
+    test('generates object from pairs', () => {
+      expect(_.fromPairs(tuples)).toEqual({
+        a: 1,
+        b: 2,
+        c: 3,
+      });
+    });
+
+    test('ignores non-tuples', () => {
+      const badInput = [...tuples, undefined, [], [2]];
+
+      expect(_.fromPairs(badInput as any)).toEqual({
+        a: 1,
+        b: 2,
+        c: 3,
+      });
+    });
+
+    describe('fromPairs typings', () => {
+      test('arrays', () => {
+        const actual = _.fromPairs(tuples);
+        const result: AssertEqual<typeof actual, Record<string, number>> = true;
+
+        expect(result).toBe(true);
+      });
+
+      test('arrays with mixed type value', () => {
+        const actual = _.fromPairs<string | number>([
+          ['a', 2],
+          ['b', 'c'],
+        ]);
+        const result: AssertEqual<
+          typeof actual,
+          Record<string, string | number>
+        > = true;
+
+        expect(result).toBe(true);
+      });
+    });
+  });
+
+  describe('toPairs function', () => {
+    test('should return pairs', () => {
+      const actual = _.toPairs({ a: 1, b: 2, c: 3 });
+
+      expect(actual).toEqual([
+        ['a', 1],
+        ['b', 2],
+        ['c', 3],
+      ]);
     });
   });
 });

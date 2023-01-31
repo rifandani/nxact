@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { purry } from '../function/function';
 import { isArray, isFunction } from '../typed/typed';
 
 /**
@@ -1053,4 +1054,90 @@ export function shift<T>(arr: Array<T>, n: number) {
     ...arr.slice(-shiftNumber, arr.length),
     ...arr.slice(0, -shiftNumber),
   ];
+}
+
+/**
+ * Splits a given array at a given index.
+ *
+ * @param array the array to split
+ * @param index the index to split at
+ * @example
+ *
+ * ```ts
+ * splitAt([1, 2, 3], 1) // => [[1], [2, 3]]
+ * splitAt([1, 2, 3, 4, 5], -1) // => [[1, 2, 3, 4], [5]]
+ * ```
+ */
+export function splitAt<T>(array: readonly T[], index: number): [T[], T[]];
+
+export function splitAt(...args: any[]) {
+  return purry(_splitAt, args);
+}
+
+function _splitAt<T>(array: T[], index: number) {
+  const copy = [...array];
+  const tail = copy.splice(index);
+  return [copy, tail];
+}
+
+/**
+ * Splits a given array at the first index where the given predicate returns true.
+ *
+ * @param array the array to split
+ * @param fn the predicate
+ * @example
+ *
+ * ```ts
+ * splitWhen([1, 2, 3], x => x === 2) // => [[1], [2, 3]]
+ * ```
+ */
+export function splitWhen<T>(
+  array: readonly T[],
+  fn: (item: T) => boolean
+): [T[], T[]];
+
+export function splitWhen(...args: any[]) {
+  return purry(_splitWhen, args);
+}
+
+function _splitWhen<T>(array: T[], fn: (item: T) => boolean) {
+  for (let i = 0; i < array.length; i++) {
+    if (fn(array[i])) {
+      return splitAt(array, i);
+    }
+  }
+
+  return [array, []];
+}
+
+/**
+ * Returns elements from the array until predicate returns false.
+ * @param array the array
+ * @param fn the predicate
+ * @example
+ *
+ * ```ts
+ * takeWhile([1, 2, 3, 4, 3, 2, 1], x => x !== 4) // => [1, 2, 3]
+ * ```
+ */
+export function takeWhile<T>(
+  array: readonly T[],
+  fn: (item: T) => boolean
+): T[];
+
+export function takeWhile(...args: any[]) {
+  return purry(_takeWhile, args);
+}
+
+function _takeWhile<T>(array: T[], fn: (item: T) => boolean) {
+  const ret: T[] = [];
+
+  for (const item of array) {
+    if (!fn(item)) {
+      break;
+    }
+    ret.push(item);
+  }
+
+  return ret;
 }
