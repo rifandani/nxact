@@ -591,7 +591,7 @@ describe('object module', () => {
   });
 
   describe('toPairs function', () => {
-    test('should return pairs', () => {
+    test('return pairs correctly', () => {
       const actual = _.toPairs({ a: 1, b: 2, c: 3 });
 
       expect(actual).toEqual([
@@ -599,6 +599,24 @@ describe('object module', () => {
         ['b', 2],
         ['c', 3],
       ]);
+    });
+  });
+
+  describe('deepReadObject function', () => {
+    const obj = { a: { b: { c: 'hello' } } };
+
+    test('read deep object correctly', () => {
+      const hello = _.deepReadObject(obj, 'a.b.c');
+      const undefinedVal = _.deepReadObject(obj, 'a.b.d');
+
+      expect(hello).toBe('hello');
+      expect(undefinedVal).toBeUndefined();
+    });
+
+    test('return fallback as default value correctly', () => {
+      const notFound = _.deepReadObject(obj, 'a.b.d', 'not found');
+
+      expect(notFound).toBe('not found');
     });
   });
 });
