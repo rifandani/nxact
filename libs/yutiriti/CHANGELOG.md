@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/rifandani/nxact/compare/yutiriti-v1.1.0...yutiriti-v1.2.0) (2023-03-13)
+
+
+### Features
+
+* **yutiriti:** add deepReadObject function ([cbb9b95](https://github.com/rifandani/nxact/commit/cbb9b954c6e176f4f1b59873622d8ac0571c1a26))
+
 # [1.1.0](https://github.com/rifandani/nxact/compare/yutiriti-v1.0.0...yutiriti-v1.1.0) (2023-01-31)
 
 
