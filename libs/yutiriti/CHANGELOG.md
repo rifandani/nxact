@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/rifandani/nxact/compare/yutiriti-v1.2.0...yutiriti-v1.2.1) (2023-07-07)
+
+
+### Bug Fixes
+
+* **yutiriti:** revert packagejson type back to  commonjs ([92ed40a](https://github.com/rifandani/nxact/commit/92ed40a65676c9604a13fae6d25dfba60253ad28))
+
 # [1.2.0](https://github.com/rifandani/nxact/compare/yutiriti-v1.1.0...yutiriti-v1.2.0) (2023-03-13)
 
 
