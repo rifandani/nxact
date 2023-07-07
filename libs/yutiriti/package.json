@@ -25,7 +25,6 @@
     "node": ">=16.x",
     "npm": ">=8.x"
   },
-  "type": "module",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {
