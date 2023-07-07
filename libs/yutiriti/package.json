@@ -25,13 +25,13 @@
     "node": ">=16.x",
     "npm": ">=8.x"
   },
-  "type": "commonjs",
+  "type": "module",
   "main": "./index.js",
   "types": "./index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.js"
+      "import": "./index.js",
+      "require": "./index.cjs"
     }
   }
 }
