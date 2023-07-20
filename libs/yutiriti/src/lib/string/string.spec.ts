@@ -41,6 +41,16 @@ describe('string module', () => {
       const result = _.snake('hello-world');
       expect(result).toEqual('hello_world');
     });
+    test('splits numbers that are next to letters', () => {
+      const result = _.snake('hello-world12_19-bye');
+      expect(result).toEqual('hello_world_12_19_bye');
+    });
+    test('does not split numbers when flag is set to false', () => {
+      const result = _.snake('hello-world12_19-bye', {
+        splitOnNumber: false,
+      });
+      expect(result).toEqual('hello_world12_19_bye');
+    });
     test('returns single word', () => {
       const result = _.snake('hello');
       expect(result).toEqual('hello');
@@ -160,7 +170,9 @@ describe('string module', () => {
       expect(_.title('va_va_boom')).toEqual('Va Va Boom');
       expect(_.title('root-hook   -  ok!')).toEqual('Root Hook Ok!');
       expect(_.title('queryItems')).toEqual('Query Items');
-      expect(_.title('queryAllItems-in_Database')).toEqual('Query All Items In Database');
+      expect(_.title('queryAllItems-in_Database')).toEqual(
+        'Query All Items In Database'
+      );
     });
     test('returns empty string for bad input', () => {
       expect(_.title(null)).toEqual('');
@@ -181,6 +193,9 @@ describe('string module', () => {
       expect(_.trim('__hello__', '_')).toEqual('hello');
       expect(_.trim('//repos////', '/')).toEqual('repos');
       expect(_.trim('/repos/:owner/:repo/', '/')).toEqual('repos/:owner/:repo');
+    });
+    test('handles when char to trim is special case in regex', () => {
+      expect(_.trim('_- hello_- ', '_- ')).toEqual('hello');
     });
   });
 });

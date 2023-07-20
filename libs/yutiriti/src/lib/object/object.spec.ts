@@ -248,6 +248,41 @@ describe('object module', () => {
         a: 'alpha',
       });
     });
+    test('works with proxified objects', () => {
+      const target = {
+        a: 'hello',
+        b: 'everyone',
+      };
+      const handler1 = {
+        get() {
+          return 'world';
+        },
+      };
+      const proxified = new Proxy(target, handler1);
+      const result = _.pick(proxified, ['a']);
+      expect(result).toEqual({
+        a: 'world',
+      });
+    });
+    test('works with objects created without the prototype chain of Object e.g. by `Object.create(null)`', () => {
+      const obj = Object.create(null);
+      obj.a = 2;
+      obj.b = 4;
+      const result = _.pick(obj, ['a']);
+      expect(result).toEqual({
+        a: 2,
+      });
+    });
+    test('works with objects that have `hasOwnProperty` overwritten', () => {
+      const obj = { a: 2, b: 4 };
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      obj.hasOwnProperty = 'OVERWRITTEN';
+      const result = _.pick(obj, ['a']);
+      expect(result).toEqual({
+        a: 2,
+      });
+    });
   });
 
   describe('omit function', () => {
@@ -402,6 +437,14 @@ describe('object module', () => {
       const result = _.assign(initial, override);
       expect(result).toEqual(override);
     });
+    test('handles initial have unique value', () => {
+      const result = _.assign({ a: 'x' }, {});
+      expect(result).toEqual({ a: 'x' });
+    });
+    test('handles override have unique value', () => {
+      const result = _.assign({}, { b: 'y' });
+      expect(result).toEqual({ b: 'y' });
+    });
   });
 
   describe('keys function', () => {
@@ -443,6 +486,8 @@ describe('object module', () => {
       expect(_.set({}, '', null as any)).toEqual({});
       expect(_.set(null as any, '', {})).toEqual({});
       expect(_.set(null as any, null as any, null as any)).toEqual({});
+      expect(_.set({ foo: true }, 'foo', false)).toEqual({ foo: false });
+      expect(_.set({}, 'foo', 0)).toEqual({ foo: 0 });
     });
     test('sets deep values correctly', () => {
       expect(_.set({}, 'cards.value', 2)).toEqual({

@@ -21,6 +21,22 @@ describe('async module', () => {
       const result = await _.reduce<number, number>(numbers, asyncSum, 0);
       expect(result).toEqual(10);
     });
+
+    test('passes correct indexes', async () => {
+      const array = ['a', 'b', 'c', 'd', 'e'];
+      const asyncSumIndex = async (
+        a: number[],
+        b: string,
+        i: number
+      ): Promise<number[]> => {
+        return new Promise((res) => {
+          a.push(i);
+          res(a);
+        });
+      };
+      const result = await _.reduce<string, number[]>(array, asyncSumIndex, []);
+      expect(result).toEqual([0, 1, 2, 3, 4]);
+    });
   });
 
   describe('asyncMap function', () => {
@@ -241,6 +257,27 @@ describe('async module', () => {
       expect(err).not.toBeDefined();
       expect(result).not.toBeNull();
       expect(result).toEqual('hello');
+    });
+
+    test('handles non-async function results', async () => {
+      const [err, result] = _.tryit(() => {
+        return 'hello';
+      })();
+      expect(err).toBeUndefined();
+      expect(result).not.toBeNull();
+      expect(result).toEqual('hello');
+    });
+
+    test('handles non-async function errors', async () => {
+      const [err, result] = _.tryit(() => {
+        // eslint-disable-next-line no-constant-condition
+        if (1 < 0) return '';
+        throw new Error('unknown');
+      })();
+      expect(result).toBeUndefined();
+      expect(err).not.toBeNull();
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      expect(err!.message).toEqual('unknown');
     });
 
     test('alias exists', () => {

@@ -320,8 +320,7 @@ export const pick = <T extends object, TKeys extends keyof T>(
   if (!obj) return {} as Pick<T, TKeys>;
 
   return keys.reduce((acc, key) => {
-    // eslint-disable-next-line no-prototype-builtins
-    if (obj.hasOwnProperty(key)) acc[key] = obj[key];
+    if (Object.prototype.hasOwnProperty.call(obj, key)) acc[key] = obj[key];
     return acc;
   }, {} as Pick<T, TKeys>);
 };
@@ -426,7 +425,7 @@ export const set = <T extends object, K>(
   value: K
 ): T => {
   if (!initial) return {} as T;
-  if (!path || !value) return initial;
+  if (!path || value === undefined) return initial;
 
   // eslint-disable-next-line no-useless-escape
   const segments = path.split(/[\.\[\]]/g).filter((x) => !!x.trim());
@@ -472,20 +471,21 @@ export const assign = <X extends Record<string | symbol | number, any>>(
   initial: X,
   override: X
 ): X => {
-  if (!initial && !override) return {} as X;
-  if (!initial) return override as X;
-  if (!override) return initial as X;
+  if (!initial || !override) return initial ?? override ?? {};
 
-  return Object.entries(initial).reduce((acc, [key, value]) => {
-    return {
-      ...acc,
-      [key]: (() => {
-        if (isObject(value)) return assign(value, override[key]);
-        // if (isArray(value)) return value.map(x => assign)
-        return override[key];
-      })(),
-    };
-  }, {} as X);
+  return Object.entries({ ...initial, ...override }).reduce(
+    (acc, [key, value]) => {
+      return {
+        ...acc,
+        [key]: (() => {
+          if (isObject(initial[key])) return assign(initial[key], value);
+          // if (isArray(value)) return value.map(x => assign)
+          return value;
+        })(),
+      };
+    },
+    {} as X
+  );
 };
 
 /**

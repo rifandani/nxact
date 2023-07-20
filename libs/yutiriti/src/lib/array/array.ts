@@ -2,6 +2,8 @@
 import { purry } from '../function/function';
 import { isArray, isFunction } from '../typed/typed';
 
+type Falsy = null | undefined | false | '' | 0 | 0n;
+
 /**
  * Sorts an array of items into groups. The return value is a map where the keys are
  * the group ids the given getGroupId function produced and the value is an array of
@@ -379,7 +381,7 @@ export const replace = <T>(
   match: (item: T, idx: number) => boolean
 ): T[] => {
   if (!list) return [];
-  if (!newItem) return [...list];
+  if (newItem === undefined) return [...list];
 
   for (let idx = 0; idx < list.length; idx++) {
     const item = list[idx];
@@ -503,14 +505,20 @@ export const select = <T, K>(
  * max(fish, f => f.weight) // => {name: "Marlin", weight: 105, source: "ocean"}
  * ```
  */
-export const max = <T extends number | object>(
+export function max(array: readonly [number, ...number[]]): number;
+export function max(array: readonly number[]): number | null;
+export function max<T>(
+  array: readonly T[],
+  getter: (item: T) => number
+): T | null;
+export function max<T>(
   array: readonly T[],
   getter?: (item: T) => number
-) => {
-  const get = getter ? getter : (v: any) => v;
+): T | null {
+  const get = getter ?? ((v: any) => v);
 
   return boil(array, (a, b) => (get(a) > get(b) ? a : b));
-};
+}
 
 /**
  * Min gets the smallest value from a list
@@ -539,14 +547,20 @@ export const max = <T extends number | object>(
  * min(fish, f => f.weight) // => {name: "Bass", weight: 8, source: "lake"}
  * ```
  */
-export const min = <T extends number | object>(
+export function min(array: readonly [number, ...number[]]): number;
+export function min(array: readonly number[]): number | null;
+export function min<T>(
+  array: readonly T[],
+  getter: (item: T) => number
+): T | null;
+export function min<T>(
   array: readonly T[],
   getter?: (item: T) => number
-) => {
-  const get = getter ? getter : (v: any) => v;
+): T | null {
+  const get = getter ?? ((v: any) => v);
 
   return boil(array, (a, b) => (get(a) < get(b) ? a : b));
-};
+}
 
 /**
  * Splits a single list into many lists of the desired size. If
@@ -960,8 +974,8 @@ export const toggle = <T>(
  * sift(fish) // => ['salmon', 'sockeye', 'bass']
  * ```
  */
-export const sift = <T>(list: readonly T[]): NonNullable<T>[] => {
-  return (list?.filter((x) => !!x) as NonNullable<T>[]) ?? [];
+export const sift = <T>(list: readonly (T | Falsy)[]): T[] => {
+  return (list?.filter((x) => !!x) as T[]) ?? [];
 };
 
 /**

@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { DebounceFunction, Func } from '../../types/common.type';
+import {
+  DebounceFunction,
+  Func,
+  ThrottledFunction,
+} from '../../types/common.type';
 
 type Cache<T> = Record<string, { exp: number | null; value: T }>;
 
@@ -254,6 +258,8 @@ export const memo = <TFunc extends Function>(
  * to cancel delayed `func` invocations and a `flush`
  * method to invoke them immediately
  *
+ * has a `isPending` method that when called will return if there is any pending invocation the source function.
+ *
  * @example
  *
  * ```ts
@@ -267,6 +273,7 @@ export const memo = <TFunc extends Function>(
  * // ... sometime later
  * debounced.cancel() // will permanently stop the source function from being debounced.
  * debounced.flush(event) // will directly invoke the source function.
+ * debounced.isPending()
  * ```
  */
 export const debounce = <TArgs extends any[]>(
@@ -282,12 +289,16 @@ export const debounce = <TArgs extends any[]>(
 
       timer = setTimeout(() => {
         active && func(...args);
+        timer = undefined;
       }, delay);
     } else {
       func(...args);
     }
   };
 
+  debounced.isPending = () => {
+    return timer !== undefined;
+  };
   debounced.cancel = () => {
     active = false;
   };
@@ -314,22 +325,28 @@ export const debounce = <TArgs extends any[]>(
 export const throttle = <TArgs extends any[]>(
   { interval }: { interval: number },
   func: (...args: TArgs) => any
-): ((...args: TArgs) => any) => {
+) => {
   let ready = true;
+  let timer: NodeJS.Timeout | undefined = undefined;
 
-  const throttled = (...args: TArgs) => {
+  const throttled: ThrottledFunction<TArgs> = (...args: TArgs) => {
     if (!ready) return;
 
     func(...args);
 
     ready = false;
 
-    setTimeout(() => {
+    timer = setTimeout(() => {
       ready = true;
+      timer = undefined;
     }, interval);
   };
 
-  return throttled as unknown as (...args: TArgs) => any;
+  throttled.isThrottled = () => {
+    return timer !== undefined;
+  };
+
+  return throttled;
 };
 
 /**

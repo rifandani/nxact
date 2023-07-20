@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-useless-escape */
 
@@ -56,7 +57,12 @@ export const camel = (str: string): string => {
  * snake('helloWord') // -> 'hello_world'
  * ```
  */
-export const snake = (str: string): string => {
+export const snake = (
+  str: string,
+  options?: {
+    splitOnNumber?: boolean;
+  }
+): string => {
   const parts =
     str
       ?.replace(/([A-Z])+/g, capitalize)
@@ -66,9 +72,12 @@ export const snake = (str: string): string => {
   if (parts.length === 0) return '';
   if (parts.length === 1) return parts[0];
 
-  return parts.reduce((acc, part) => {
+  const result = parts.reduce((acc, part) => {
     return `${acc}_${part.toLowerCase()}`;
   });
+  return options?.splitOnNumber === false
+    ? result
+    : result.replace(/([A-Za-z]{1}[0-9]{1})/, (val) => `${val[0]!}_${val[1]!}`);
 };
 
 /**
@@ -179,7 +188,8 @@ export const template = (
 export const trim = (str: string | null | undefined, charsToTrim = ' ') => {
   if (!str) return '';
 
-  const regex = new RegExp(`^[${charsToTrim}]+|[${charsToTrim}]+$`, 'g');
+  const toTrim = charsToTrim.replace(/[\W]{1}/g, '\\$&');
+  const regex = new RegExp(`^[${toTrim}]+|[${toTrim}]+$`, 'g');
 
   return str.replace(regex, '');
 };
