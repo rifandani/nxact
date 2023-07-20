@@ -14,9 +14,7 @@ export const isSymbol = (value: any): value is symbol => {
  * isArray(['hello']) // => true
  * ```
  */
-export const isArray = (value: any): value is unknown[] => {
-  return !!value && value.constructor === Array;
-};
+export const isArray = Array.isArray;
 
 /**
  * Determine if a value is an Array

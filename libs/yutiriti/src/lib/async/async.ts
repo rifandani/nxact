@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { fork, list, range, sort } from '../array/array';
+import { isPromise } from '../typed/typed';
 
 type WorkItemResult<K> = {
   index: number;
@@ -49,7 +50,7 @@ export class AggregateError extends Error {
  */
 export const reduce = async <T, K>(
   array: readonly T[],
-  asyncReducer: (acc: K, item: T) => Promise<K>,
+  asyncReducer: (acc: K, item: T, index: number) => Promise<K>,
   initValue?: K
 ): Promise<K> => {
   const initProvided = initValue !== undefined;
@@ -61,8 +62,8 @@ export const reduce = async <T, K>(
   const iter = initProvided ? array : array.slice(1);
   let value: any = initProvided ? initValue : array[0];
 
-  for (const item of iter) {
-    value = await asyncReducer(value, item);
+  for (const [i, item] of iter.entries()) {
+    value = await asyncReducer(value, item, i);
   }
 
   return value;
@@ -317,18 +318,30 @@ export const sleep = (milliseconds: number) => {
  * const [err, user] = await findUser(userId)
  * ```
  */
-export const tryit = <TFunction extends (...args: any) => any>(
-  func: TFunction
+export const tryit = <Args extends any[], Return>(
+  func: (...args: Args) => Return
 ) => {
-  return async (
-    ...args: ArgumentsType<TFunction>
-  ): Promise<
-    [Error, undefined] | [undefined, UnwrapPromisify<ReturnType<TFunction>>]
-  > => {
+  return (
+    ...args: Args
+  ): Return extends Promise<any>
+    ? Promise<[Error, undefined] | [undefined, Awaited<Return>]>
+    : [Error, undefined] | [undefined, Return] => {
     try {
-      return [undefined, await func(...(args as any))];
+      const result = func(...args);
+      if (isPromise(result)) {
+        return result
+          .then((value) => [undefined, value])
+          .catch((err) => [err, undefined]) as Return extends Promise<any>
+          ? Promise<[Error, undefined] | [undefined, Awaited<Return>]>
+          : [Error, undefined] | [undefined, Return];
+      }
+      return [undefined, result] as Return extends Promise<any>
+        ? Promise<[Error, undefined] | [undefined, Awaited<Return>]>
+        : [Error, undefined] | [undefined, Return];
     } catch (err) {
-      return [err as any, undefined];
+      return [err as any, undefined] as Return extends Promise<any>
+        ? Promise<[Error, undefined] | [undefined, Awaited<Return>]>
+        : [Error, undefined] | [undefined, Return];
     }
   };
 };

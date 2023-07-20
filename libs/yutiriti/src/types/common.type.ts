@@ -11,6 +11,10 @@ export type DebounceFunction<TArgs extends any[]> = {
    */
   cancel(): void;
   /**
+   * Checks if there is any invocation debounced
+   */
+  isPending(): boolean;
+  /**
    * Runs the debounced function immediately
    */
   flush(...args: TArgs): void;
@@ -21,3 +25,11 @@ export type AssertEqual<Type, Expected> = Array<Type> extends Array<Expected>
     ? true
     : never
   : never;
+
+export type ThrottledFunction<TArgs extends any[]> = {
+  (...args: TArgs): void;
+  /**
+   * Checks if there is any invocation throttled
+   */
+  isThrottled(): boolean;
+};

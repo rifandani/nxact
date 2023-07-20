@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { DebounceFunction } from '../../types/common.type';
 import * as _async from '../async/async';
@@ -191,7 +192,7 @@ describe('curry module', () => {
       expect(mockFunc).toHaveBeenCalledTimes(6);
     });
 
-    test('when we call the flush method it should execute the function immediately', () => {
+    test('executes the function immediately when the flush method is called', () => {
       func.flush();
       expect(mockFunc).toHaveBeenCalledTimes(1);
     });
@@ -209,6 +210,20 @@ describe('curry module', () => {
       expect(mockFunc).toHaveBeenCalledTimes(3);
     });
 
+    test('cancels all pending invocations when the cancel method is called', async () => {
+      const results: boolean[] = [];
+      func();
+      results.push(func.isPending());
+      results.push(func.isPending());
+      await _async.sleep(610);
+      results.push(func.isPending());
+      func();
+      results.push(func.isPending());
+      await _async.sleep(610);
+      results.push(func.isPending());
+      expect(results).toEqual([true, true, false, true, false]);
+    });
+
     test('cancels all pending invocations when cancel is called', async () => {
       func();
       func.cancel();
@@ -218,7 +233,7 @@ describe('curry module', () => {
   });
 
   describe('throttle function', () => {
-    test('', async () => {
+    test('basic throttle', async () => {
       let calls = 0;
       const func = _.throttle({ interval: 600 }, () => calls++);
       func();
@@ -231,6 +246,21 @@ describe('curry module', () => {
       func();
       expect(calls).toEqual(2);
     });
+  });
+
+  test('returns if the throttle is active', async () => {
+    const results = [];
+    const func = _.throttle({ interval: 600 }, () => {});
+    results.push(func.isThrottled());
+    func();
+    results.push(func.isThrottled());
+    func();
+    results.push(func.isThrottled());
+    func();
+    results.push(func.isThrottled());
+    await _async.sleep(610);
+    results.push(func.isThrottled());
+    expect(results).toEqual([false, true, true, true, false]);
   });
 });
 

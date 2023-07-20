@@ -165,9 +165,13 @@ describe('array module', () => {
       );
       expect(result).toEqual([]);
     });
-    test('returns the list for a null new item', () => {
-      const result = _.replace(['a'], null, () => false);
+    test('returns the list for an undefined new item', () => {
+      const result = _.replace(['a'], undefined, () => true);
       expect(result).toEqual(['a']);
+    });
+    test('returns replaced item when value is null', () => {
+      const result = _.replace(['a'], null, (i) => i === 'a');
+      expect(result).toEqual([null]);
     });
     test('returns replaced item by index', () => {
       const result = _.replace(
