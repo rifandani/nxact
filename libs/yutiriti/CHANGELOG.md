@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/rifandani/nxact/compare/yutiriti-v1.2.1...yutiriti-v1.2.2) (2023-07-22)
+
+
+### Bug Fixes
+
+* **yutiriti:** updates, clean up, tests ([1319b00](https://github.com/rifandani/nxact/commit/1319b00db85d69f4b6145a4598819847cb09cbcd))
+
 ## [1.2.1](https://github.com/rifandani/nxact/compare/yutiriti-v1.2.0...yutiriti-v1.2.1) (2023-07-07)
 
 
